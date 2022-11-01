@@ -1,0 +1,264 @@
+---
+sidebar: sidebar 
+permalink: task-external-vault.html 
+keywords: hashicorp, vault, credentials, secrets, API 
+summary: 'Lorsque vous créez une relation de synchronisation qui requiert des identifiants Amazon S3, Azure ou Google Cloud, vous devez spécifier ces identifiants via l"interface ou l"API utilisateur de Cloud Sync. Une alternative consiste à configurer le courtier de données pour accéder aux informations d"identification directement à partir d"un coffre-fort externe HashiCorp.' 
+---
+= Configuration d'un groupe de courtier de données pour utiliser un coffre-fort externe HashiCorp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Lorsque vous créez une relation de synchronisation qui requiert des identifiants Amazon S3, Azure ou Google Cloud, vous devez spécifier ces identifiants via l'interface ou l'API utilisateur de Cloud Sync. Une alternative consiste à configurer le groupe de courtiers de données pour accéder aux informations d'identification (ou _secrets_) directement à partir d'un coffre-fort externe HashiCorp.
+
+Cette fonctionnalité est prise en charge par le biais de l'API Cloud Sync avec des relations synchronisées qui requièrent des identifiants Amazon S3, Azure ou Google Cloud.
+
+[role="quick-margin-para"]
+Préparez le coffre-fort pour fournir les informations d'identification au groupe de courtiers de données en configurant les URL. Les URL des secrets dans le coffre-fort doivent se terminer par _creds_.
+
+[role="quick-margin-para"]
+Préparez le groupe de courtier de données pour extraire les informations d'identification du coffre-fort externe en modifiant le fichier de configuration local de chaque courtier de données du groupe.
+
+[role="quick-margin-para"]
+Maintenant que tout est configuré, vous pouvez envoyer un appel API pour créer une relation de synchronisation qui utilise votre coffre-fort pour obtenir les secrets.
+
+
+
+== Préparation du coffre-fort
+
+Vous devrez fournir à Cloud Sync l'URL des secrets de votre coffre-fort. Préparez le coffre-fort en configurant ces URL. Vous devez configurer des URL pour les identifiants de chaque source et cible dans les relations de synchronisation que vous prévoyez de créer.
+
+L'URL doit être configurée comme suit :
+
+`/<path>/<requestid>/<endpoint-protocol>Creds`
+
+Chemin:: Chemin du préfixe vers le secret. Tous ces atouts peuvent être uniques à votre entreprise.
+ID de la demande:: ID de demande que vous devez générer. Vous devrez fournir l'ID dans l'un des en-têtes de la demande POST API lorsque vous créez la relation de synchronisation.
+Protocole de terminal:: L'un des protocoles suivants, tel que défini https://api.cloudsync.netapp.com/docs/#/Relationships-v2/post_relationships_v2["dans la documentation post-relation v2"^]: S3, AZURE ou GCP (chacun doit être en majuscules).
+Creds:: L'URL doit se terminer par _creds_.
+
+
+
+
+=== Exemples
+
+Les exemples suivants montrent des URL vers des secrets.
+
+Exemple pour l'URL complète et le chemin d'accès pour les informations d'identification source:: \http://example.vault.com:8200/my-path/all-secrets/hb312vdasr2/S3Creds
++
+--
+Comme vous pouvez le voir dans l'exemple, le chemin du préfixe est _/mon-chemin/tous-secrets/_, l'ID de la demande est _hb312vdasr2_ et le noeud final source est S3.
+
+--
+Exemple pour l'URL complète et le chemin des informations d'identification de la cible:: \http://example.vault.com:8200/my-path/all-secrets/n32hcbnejk2/AZURECreds
++
+--
+Le chemin du préfixe est _/my-path/all-secrets/_, l'ID de la demande est _n32hcbnejk2_, et le noeud final cible est Azure.
+
+--
+
+
+
+
+== Préparation du groupe de courtiers de données
+
+Préparez le groupe de courtier de données pour extraire les informations d'identification du coffre-fort externe en modifiant le fichier de configuration local de chaque courtier de données du groupe.
+
+.Étapes
+. SSH vers un courtier de données dans le groupe.
+. Modifiez le fichier local.json qui se trouve dans /opt/netapp/Dataroker/config.
+. Définissez l'option enable sur *true* et définissez les champs des paramètres de configuration sous _external-intégrations.haschicorp_ comme suit :
++
+activé::
++
+--
+** Valeurs valides : vrai/faux
+** Type : booléen
+** Valeur par défaut : FALSE
+** Vrai: Le courtier de données obtient des secrets de votre propre coffre-fort externe HashiCorp
+** FALSE : le courtier de données stocke les informations d'identification dans son coffre-fort local
+
+
+--
+url::
++
+--
+** Type : chaîne
+** Valeur : l'URL de votre coffre-fort externe
+
+
+--
+chemin::
++
+--
+** Type : chaîne
+** Valeur : chemin du préfixe vers le secret avec vos informations d'identification
+
+
+--
+Rejet non autorisé::
++
+--
+** Détermine si vous souhaitez que le courtier de données rejette le coffre-fort externe non autorisé
+** Type : booléen
+** Par défaut : FALSE
+
+
+--
+méthode-auth::
++
+--
+** Méthode d'authentification que le courtier de données doit utiliser pour accéder aux informations d'identification à partir du coffre-fort externe
+** Type : chaîne
+** Valeurs valides : "aws-iam" / "Role-app" / "gcp-iam"
+
+
+--
+nom-rôle::
++
+--
+** Type : chaîne
+** Nom du rôle (si vous utilisez aws-iam ou gcp-iam)
+
+
+--
+Secretid et rotide::
++
+--
+** Type : chaîne (si vous utilisez APP-role)
+
+
+--
+Espace de noms::
++
+--
+** Type : chaîne
+** Votre espace de noms (en-tête X-Vault-namespace, le cas échéant)
+
+
+--
+
+
+. Répétez ces étapes pour tous les autres courtiers de données du groupe.
+
+
+
+
+=== Exemple d'authentification aws-role
+
+[source, json]
+----
+{
+          “external-integrations”: {
+                  “hashicorp”: {
+                         “enabled”: true,
+                         “url”: “https://example.vault.com:8200”,
+                         “path”: ““my-path/all-secrets”,
+                         “reject-unauthorized”: false,
+                         “auth-method”: “aws-role”,
+                         “aws-role”: {
+                               “role-name”: “my-role”
+                         }
+                }
+       }
+}
+----
+
+
+=== Exemple d'authentification gcp-iam
+
+[source, json]
+----
+{
+"external-integrations": {
+    "hashicorp": {
+      "enabled": true,
+      "url": http://ip-10-20-30-55.ec2.internal:8200,
+      "path": "v1/secret",
+      "namespace": "",
+      "reject-unauthorized": true,
+      "auth-method": "gcp-iam",
+      "aws-iam": {
+        "role-name": ""
+      },
+      "app-role": {
+        "root_id": "",
+        "secret_id": ""
+      },
+"gcp-iam": {
+          "role-name": "my-iam-role"
+      }
+    }
+  }
+}
+----
+
+
+=== Configuration des autorisations lors de l'utilisation de l'authentification gcp-iam
+
+Si vous utilisez la méthode d'authentification _gcp-iam_, le courtier de données doit disposer de l'autorisation GCP suivante :
+
+[source, yaml]
+----
+- iam.serviceAccounts.signJwt
+----
+link:task-installing-gcp.html#permissions-required-for-the-service-account["En savoir plus sur les exigences d'autorisation GCP pour le courtier de données"].
+
+
+
+== Création d'une nouvelle relation de synchronisation à l'aide des secrets du coffre-fort
+
+Maintenant que tout est configuré, vous pouvez envoyer un appel API pour créer une relation de synchronisation qui utilise votre coffre-fort pour obtenir les secrets.
+
+Publiez la relation à l'aide de l'API REST de Cloud Sync.
+
+....
+Headers:
+Authorization: Bearer <user-token>
+Content-Type: application/json
+x-account-id: <accountid>
+x-netapp-external-request-id-src: request ID as part of path for source credentials
+x-netapp-external-request-id-trg: request ID as part of path for target credentials
+Body: post relationship v2 body
+....
+* Pour obtenir un jeton utilisateur et votre identifiant de compte BlueXP, link:api-sync.html["reportez-vous à cette page dans la documentation"].
+* Pour créer un corps pour votre relation post, https://api.cloudsync.netapp.com/docs/#/Relationships-v2/post_relationships_v2["Reportez-vous à l'appel de l'API relations-v2"^].
+
+
+
+
+=== Exemple
+
+Exemple pour la demande POST :
+
+[source, json]
+----
+url: https://api.cloudsync.netapp.com/api/relationships-v2
+headers:
+"x-account-id": "CS-SasdW"
+"x-netapp-external-request-id-src": "hb312vdasr2"
+"Content-Type": "application/json"
+"Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik…"
+Body:
+{
+"dataBrokerId": "5e6e111d578dtyuu1555sa60",
+"source": {
+        "protocol": "s3",
+        "s3": {
+                "provider": "sgws",
+                "host": "1.1.1.1",
+                "port": "443",
+                "bucket": "my-source"
+     },
+"target": {
+        "protocol": "s3",
+        "s3": {
+                "bucket": "my-target-bucket"
+        }
+    }
+}
+----

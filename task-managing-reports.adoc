@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task-managing-reports.html 
+keywords: reports, sync reports, cloud sync reports, report errors, path reports 
+summary: 'Créez et consultez des rapports pour obtenir des informations utiles avec l"aide du personnel NetApp afin de régler la configuration d"un courtier de données et d"améliorer les performances.' 
+---
+= Création et affichage de rapports pour ajuster votre configuration
+:toc: macro
+:hardbreaks:
+:allow-uri-read: 
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Créez et consultez des rapports pour obtenir des informations utiles avec l'aide du personnel NetApp afin de régler la configuration d'un courtier de données et d'améliorer les performances.
+
+Chaque rapport fournit des détails détaillés sur un chemin dans une relation de synchronisation. Par exemple, le rapport d'un système de fichiers indique le nombre de répertoires et de fichiers qu'il y a, la répartition de la taille du fichier, la profondeur et la largeur des répertoires, et plus encore.
+
+
+
+== Création de rapports
+
+Chaque fois que vous créez un rapport, Cloud Sync analyse le chemin, puis compile les informations dans un rapport.
+
+.Étapes
+. Cliquez sur *Sync > Rapports*.
++
+Les chemins (source ou cible) de chacune de vos relations de synchronisation s'affichent dans une table.
+
+. Dans la colonne *Rapports actions*, allez à un chemin spécifique et cliquez sur *Créer*, ou cliquez sur le menu d'action et sélectionnez *Créer nouveau*.
+. Lorsque le rapport est prêt, cliquez sur le menu d'action et sélectionnez *Affichage*.
++
+Voici un exemple de rapport pour un chemin de système de fichiers.
+
++
+image:screenshot_sync_report.gif["Un rapport indiquant la quantité d'éléments synchronisés, la taille du fichier, les valeurs maximales, le temps d'accès, le temps de modification, et modifier l'heure."]
+
++
+Et voici un exemple de rapport sur le stockage objet.
+
++
+image:screenshot_sync_report_object.gif["Rapport indiquant le nombre d'éléments de chemin d'accès, la taille des objets, la durée de modification et la classe de stockage."]
+
+
+
+
+
+== Téléchargement de rapports
+
+Vous pouvez télécharger un rapport au format PDF pour le visualiser hors ligne ou le partager.
+
+.Étapes
+. Cliquez sur *Sync > Rapports*.
+. Dans la colonne *Rapports actions*, cliquez sur le menu d'action et sélectionnez *Affichage*.
+. Dans le coin supérieur droit du rapport, cliquez sur le menu d'action et sélectionnez *Télécharger PDF*.
++
+image:screenshot-sync-download-report.png["Capture d'écran de l'option Télécharger PDF qui s'affiche après avoir cliqué sur le menu d'action dans un rapport."]
+
+
+
+
+
+== Affichage des erreurs de rapport
+
+Le tableau chemins identifie si des erreurs sont présentes dans le rapport le plus récent. Une erreur identifie un problème rencontré par Cloud Sync lors de la numérisation du chemin.
+
+Par exemple, un rapport peut contenir des erreurs d'autorisation refusée. Ce type d'erreur peut affecter la capacité de Cloud Sync à analyser l'ensemble des fichiers et des répertoires.
+
+Après avoir vu la liste des erreurs, vous pouvez résoudre les problèmes et exécuter à nouveau le rapport.
+
+.Étapes
+. Cliquez sur *Sync > Rapports*.
+. Dans la colonne *erreurs*, identifiez si des erreurs sont présentes dans un rapport.
+. Si des erreurs sont présentes, cliquez sur la flèche en regard du nombre d'erreurs.
++
+image:screenshot_sync_report_errors.gif["Capture d'écran de la table Paths indiquant le nombre d'erreurs et une petite flèche cliquable dans la colonne Errors."]
+
+. Utilisez les informations de l'erreur pour corriger le problème.
++
+Après avoir résolu le problème, l'erreur ne devrait pas apparaître lors de la prochaine exécution du rapport.
+
+
+
+
+
+== Suppression de rapports
+
+Vous pouvez supprimer un rapport contenant une erreur que vous avez corrigée ou si le rapport est associé à une relation de synchronisation que vous avez supprimée.
+
+.Étapes
+. Cliquez sur *Sync > Rapports*.
+. Dans la colonne *Rapports actions*, cliquez sur le menu d'action d'un chemin et sélectionnez *Supprimer le dernier rapport* ou *Supprimer tous les rapports*.
+. Confirmez que vous souhaitez supprimer le ou les rapports.
+

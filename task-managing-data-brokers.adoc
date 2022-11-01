@@ -1,0 +1,294 @@
+---
+sidebar: sidebar 
+permalink: task-managing-data-brokers.html 
+keywords: manage data brokers, manage data broker groups, data broker performance, data broker configuration, data broker removal, remove data broker, delete data broker, groups, data broker group, rename data broker group, add data broker, data broker cpu, data broker ram, data broker status, edit group name, change group name, modify group name 
+summary: 'Un courtier en données synchronise les données d"un emplacement source vers un emplacement cible. Un courtier de données est requis pour chaque relation de synchronisation que vous créez. Gérer les courtiers de données en ajoutant un nouveau courtier de données à un groupe, en consultant les informations sur les courtiers de données, etc.' 
+---
+= Gérez les groupes de courtiers de données
+:toc: macro
+:hardbreaks:
+:allow-uri-read: 
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Un groupe de courtier de données synchronise les données d'un emplacement source vers un emplacement cible. Au moins un courtier de données est requis dans un groupe pour chaque relation de synchronisation que vous créez. Gérer les groupes de courtiers de données en ajoutant un nouveau courtier de données à un groupe, en affichant des informations sur les groupes, etc.
+
+
+
+== Fonctionnement des groupes de courtiers de données
+
+Un groupe de courtiers de données peut comprendre un ou plusieurs courtiers de données. Le regroupement de courtiers de données entre eux permet d'améliorer les performances des relations de synchronisation.
+
+
+
+=== Les groupes peuvent gérer plusieurs relations
+
+Un groupe de courtiers de données peut gérer une ou plusieurs relations synchronisées à la fois.
+
+Imaginons par exemple que vous ayez trois relations :
+
+* La relation 1 est gérée par le groupe de courtiers de données A
+* La relation 2 est gérée par le groupe de courtiers de données B
+* La relation 3 est gérée par le groupe de courtiers de données A.
+
+
+Vous voulez accélérer les performances de la relation 1 pour ajouter un nouveau courtier de données au groupe de courtier de données A. Dans la mesure où le groupe A gère également la relation de synchronisation 3, les performances de synchronisation de la relation sont également automatiquement accélérées.
+
+
+
+=== Nombre de courtiers de données dans un groupe
+
+Dans de nombreux cas, un seul courtier de données peut répondre aux exigences de performance d'une relation de synchronisation. Si ce n'est pas le cas, vous pouvez accélérer les performances de synchronisation en ajoutant des courtiers de données supplémentaires au groupe. Mais vous devez d'abord vérifier d'autres facteurs qui peuvent avoir un impact sur les performances de synchronisation. link:faq.html#how-many-data-brokers-are-required-in-a-group["En savoir plus sur la façon de déterminer si plusieurs courtiers de données sont nécessaires"].
+
+
+
+== Recommandations en matière de sécurité
+
+Pour assurer la sécurité de votre courtier en données, NetApp recommande les éléments suivants :
+
+* SSH ne doit pas autoriser X11 Forwarding
+* SSH ne doit pas autoriser le transfert de connexion TCP
+* SSH ne doit pas autoriser les tunnels
+* SSH ne doit pas accepter les variables d'environnement client
+
+
+Ces recommandations de sécurité peuvent aider à empêcher toute connexion non autorisée à la machine du courtier de données.
+
+
+
+== Ajouter un nouveau courtier de données à un groupe
+
+Il existe plusieurs façons de créer un nouveau courtier de données :
+
+* Lors de la création d'une nouvelle relation de synchronisation
++
+link:task-creating-relationships.html["Découvrez comment créer un nouveau courtier de données lors de la création d'une relation de synchronisation"].
+
+* Dans la page *gérer les courtiers de données* en cliquant sur *Ajouter un nouveau courtier de données* qui crée le courtier de données dans un nouveau groupe
+* À partir de la page *gérer les courtiers de données* en créant un nouveau courtier de données dans un groupe existant
+
+
+.Avant de commencer
+* Vous ne pouvez pas ajouter de courtiers de données à un groupe qui gère une relation de synchronisation chiffrée.
+* Si vous souhaitez créer un courtier en données au sein d'un groupe existant, le courtier en données doit être un courtier en données sur site ou le même type de courtier.
++
+Par exemple, si un groupe inclut un courtier en données AWS, vous pouvez créer un courtier en données AWS ou un courtier en données sur site dans ce groupe. Vous ne pouvez pas créer de courtier en données Azure ou de courtier en données Google Cloud, car ils ne sont pas le même type de courtier.
+
+
+
+.Étapes pour créer un courtier de données dans un nouveau groupe
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur *Ajouter un nouveau courtier de données*.
+. Suivez les invites pour créer le courtier de données.
++
+Pour obtenir de l'aide, reportez-vous aux pages suivantes :
+
++
+** link:task-installing-aws.html["Créer un courtier en données dans AWS"]
+** link:task-installing-azure.html["Créer un courtier en données dans Azure"]
+** link:task-installing-gcp.html["Créer un courtier en données dans Google Cloud"]
+** link:task-installing-linux.html["Installation du data broker sur un hôte Linux"]
+
+
+
+
+.Étapes pour créer un courtier de données dans un groupe existant
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur le menu d'action et sélectionnez *Ajouter un courtier de données*.
++
+image:screenshot_sync_group_add.png["Capture d'écran du menu d'action disponible pour chaque courtier de données individuel d'un groupe."]
+
+. Suivez les invites pour créer le courtier de données dans le groupe.
++
+Pour obtenir de l'aide, reportez-vous aux pages suivantes :
+
++
+** link:task-installing-aws.html["Créer un courtier en données dans AWS"]
+** link:task-installing-azure.html["Créer un courtier en données dans Azure"]
+** link:task-installing-gcp.html["Créer un courtier en données dans Google Cloud"]
+** link:task-installing-linux.html["Installation du data broker sur un hôte Linux"]
+
+
+
+
+
+
+== Modifier le nom d'un groupe
+
+Modifier le nom d'un groupe de courtiers de données à tout moment.
+
+.Étapes
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur le menu d'action et sélectionnez *Modifier le nom du groupe*.
++
+image:screenshot_sync_group_edit.gif["Capture d'écran du menu d'action disponible pour chaque courtier de données individuel d'un groupe."]
+
+. Entrez un nouveau nom et cliquez sur *Enregistrer*.
+
+
+Cloud Sync met à jour le nom du groupe de courtiers de données.
+
+
+
+== Configurez une configuration unifiée
+
+Si une relation de synchronisation rencontre des erreurs lors du processus de synchronisation, l'unification de la simultanéité du groupe de courtiers de données peut aider à diminuer le nombre d'erreurs de synchronisation. Notez que les modifications apportées à la configuration du groupe peuvent affecter les performances en ralentissant le transfert.
+
+Nous ne recommandons pas de modifier par vous-même la configuration. Consultez NetApp pour savoir quand modifier la configuration et comment la modifier.
+
+.Étapes
+. Cliquez sur *gérer les courtiers de données*.
+. Cliquez sur l'icône Paramètres d'un groupe de courtiers de données.
++
+image:screenshot_sync_group_settings.png["Capture d'écran affichant l'icône Paramètres d'un groupe de courtiers de données."]
+
+. Modifiez les paramètres selon vos besoins, puis cliquez sur *Unify Configuration*.
++
+Notez ce qui suit :
+
++
+** Vous pouvez choisir les paramètres à modifier, mais vous n'avez pas besoin de les modifier simultanément.
+** Une fois qu'une nouvelle configuration est envoyée à un courtier de données, le courtier redémarre automatiquement et utilise la nouvelle configuration.
+** Un délai peut s'effectuer jusqu'à ce que cette modification soit visible dans l'interface de Cloud Sync.
+** Si un courtier de données n'est pas en cours d'exécution, sa configuration ne change pas, car Cloud Sync ne peut pas communiquer avec lui. La configuration change après le redémarrage du courtier de données.
+** Une fois la configuration unifiée définie, tous les nouveaux courtiers de données utilisent automatiquement la nouvelle configuration.
+
+
+
+
+
+
+== Déplacez les courtiers de données d'un groupe à l'autre
+
+Déplacez un courtier de données d'un groupe à un autre si vous avez besoin d'accélérer les performances du groupe de courtiers de données cible.
+
+Par exemple, si un courtier de données ne gère plus une relation synchrone, vous pouvez facilement la déplacer vers un autre groupe gérant les relations de synchronisation.
+
+.Limites
+* Si un groupe de courtiers de données gère une relation de synchronisation et qu'il n'y a qu'un seul courtier de données dans le groupe, vous ne pouvez pas transférer ce courtier de données vers un autre groupe.
+* Vous ne pouvez pas déplacer un courtier de données vers ou depuis un groupe qui gère les relations de synchronisation chiffrées.
+* Vous ne pouvez pas déplacer un courtier en données actuellement déployé.
+
+
+.Étapes
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur image:screenshot_sync_group_expand.gif["Capture d'écran du bouton qui vous permet de développer la liste des courtiers de données d'un groupe."] pour développer la liste des courtiers de données d'un groupe.
+. Cliquez sur le menu d'action d'un courtier de données et sélectionnez *déplacer le courtier de données*.
++
+image:screenshot_sync_group_remove.png["Capture d'écran du menu d'action disponible pour chaque groupe de courtiers de données."]
+
+. Créez un nouveau groupe de courtiers de données ou sélectionnez un groupe de courtiers de données existant.
+. Cliquez sur *déplacer*.
+
+
+Cloud Sync déplace le courtier en données vers un groupe de courtiers de données nouveau ou existant. S'il n'y a pas d'autres courtiers de données dans le groupe précédent, Cloud Sync le supprime.
+
+
+
+== Mettre à jour la configuration du proxy
+
+Mettez à jour la configuration du proxy pour un courtier de données en ajoutant des détails sur une nouvelle configuration de proxy ou en modifiant la configuration de proxy existante.
+
+.Étapes
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur image:screenshot_sync_group_expand.gif["Capture d'écran du bouton qui vous permet de développer la liste des courtiers de données d'un groupe."] pour développer la liste des courtiers de données d'un groupe.
+. Cliquez sur le menu d'action d'un courtier de données et sélectionnez *Modifier la configuration du proxy*.
+. Spécifiez des détails sur le proxy : nom d'hôte, numéro de port, nom d'utilisateur et mot de passe.
+. Cliquez sur *mettre à jour*.
+
+
+Cloud Sync met à jour le courtier de données pour utiliser la configuration proxy pour l'accès à Internet.
+
+
+
+== Afficher la configuration d'un courtier de données
+
+Vous pouvez consulter des détails sur un courtier de données pour identifier des éléments tels que son nom d'hôte, son adresse IP, son CPU et sa mémoire vive disponibles, etc.
+
+Cloud Sync fournit les informations suivantes concernant un courtier en données :
+
+* Informations de base : ID d'instance, nom d'hôte, etc
+* Réseau : région, réseau, sous-réseau, IP privée, etc
+* Logiciel : distribution Linux, version de courtier de données, etc
+* Matériel : processeur et RAM
+* Configuration : détails sur les deux types de processus principaux du courtier de données : scanner et transfert
++
+
+TIP: Le scanner numérise la source et la cible et décide de ce qui doit être copié. Le transfert effectue la copie réelle. L'équipe NetApp peut utiliser ces détails de configuration pour suggérer des actions permettant d'optimiser les performances.
+
+
+
+.Étapes
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur image:screenshot_sync_group_expand.gif["Capture d'écran du bouton qui vous permet de développer la liste des courtiers de données d'un groupe."] pour développer la liste des courtiers de données d'un groupe.
+. Cliquez sur image:screenshot_sync_group_expand.gif["Capture d'écran du bouton qui vous permet de développer les détails d'un courtier de données."] pour afficher les détails d'un courtier de données.
++
+image:screenshot_sync_data_broker_details.gif["Capture d'écran des informations relatives à un courtier de données."]
+
+
+
+
+
+== Résoudre les problèmes avec un courtier de données
+
+Cloud Sync affiche un statut pour chaque courtier de données qui peut vous aider à résoudre les problèmes.
+
+.Étapes
+. Identifiez tous les courtiers de données dont l'état est « Inconnu » ou « en échec ».
++
+image:screenshot_sync_broker_status.gif["Une capture d'écran de l'état de Cloud Sync affiche l'état « inconnu » d'un courtier de données."]
+
+. Placez le pointeur de la souris sur le image:screenshot_sync_status_icon.gif["Une icône « info »."] pour voir la raison de l'échec.
+. Corrigez le problème.
++
+Par exemple, vous devrez peut-être redémarrer le courtier en données si celui-ci est hors ligne, ou supprimer le courtier en données si le déploiement initial a échoué.
+
+
+
+
+
+== Supprimer un courtier de données d'un groupe
+
+Vous pouvez supprimer un courtier de données d'un groupe s'il n'est plus nécessaire ou si le déploiement initial a échoué. Cette action supprime uniquement le courtier en données des enregistrements de Cloud Sync. Vous devrez supprimer manuellement le courtier en données et toutes les ressources cloud supplémentaires.
+
+.Ce que vous devez savoir
+* Cloud Sync supprime un groupe lorsque vous supprimez le dernier courtier de données du groupe.
+* Vous ne pouvez pas supprimer le dernier courtier de données d'un groupe s'il existe une relation utilisant ce groupe.
+
+
+.Étapes
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur image:screenshot_sync_group_expand.gif["Capture d'écran du bouton qui vous permet de développer la liste des courtiers de données d'un groupe."] pour développer la liste des courtiers de données d'un groupe.
+. Cliquez sur le menu d'action d'un courtier de données et sélectionnez *Supprimer le courtier de données*.
++
+image:screenshot_sync_group_remove.gif["Capture d'écran du menu d'action disponible pour chaque groupe de courtiers de données."]
+
+. Cliquez sur *Supprimer le courtier de données*.
+
+
+Cloud Sync supprime le courtier de données du groupe.
+
+
+
+== Supprimer un groupe de courtier de données
+
+Si un groupe de courtiers de données ne gère plus de relations de synchronisation, vous pouvez supprimer le groupe, qui supprime tous les courtiers de données de Cloud Sync.
+
+Les courtiers de données supprimés par Cloud Sync ne sont supprimés que des enregistrements de Cloud Sync. Vous devrez supprimer manuellement l'instance de courtier en données de votre fournisseur de cloud, ainsi que toutes les ressources cloud supplémentaires.
+
+.Étapes
+. Cliquez sur *Sync > gérer les courtiers de données*.
+. Cliquez sur le menu d'action et sélectionnez *Supprimer le groupe*.
++
+image:screenshot_sync_group_add.png["Capture d'écran du menu d'action disponible pour chaque courtier de données individuel d'un groupe."]
+
+. Pour confirmer, entrez le nom du groupe et cliquez sur *Supprimer le groupe*.
+
+
+Cloud Sync supprime les courtiers de données et supprime le groupe.

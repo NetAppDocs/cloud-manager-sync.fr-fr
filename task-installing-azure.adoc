@@ -1,0 +1,212 @@
+---
+sidebar: sidebar 
+permalink: task-installing-azure.html 
+keywords: data broker, install, azure, networking, permissions, regions, install data broker in azure, install in azure, deploy in azure, deploy data broker in azure, networking requirements, port, ports, 443, port 443, ntp, network time protocol, azure data broker 
+summary: 'Lorsque vous créez un nouveau courtier en données, choisissez l"option Azure Data Broker pour déployer le logiciel de courtier en données sur une nouvelle machine virtuelle dans un vnet. Cloud Sync vous guide tout au long du processus d"installation, mais les exigences et les étapes sont répétées sur cette page pour vous aider à vous préparer à l"installation.' 
+---
+= Création d'un nouveau courtier en données dans Azure
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lorsque vous créez un nouveau groupe de courtiers de données, choisissez Microsoft Azure pour déployer le logiciel de courtier de données sur une nouvelle machine virtuelle dans un vnet. Cloud Sync vous guide tout au long du processus d'installation, mais les exigences et les étapes sont répétées sur cette page pour vous aider à vous préparer à l'installation.
+
+Vous avez également la possibilité d'installer le courtier de données sur un hôte Linux existant dans le cloud ou sur votre site. link:task-installing-linux.html["En savoir plus >>"].
+
+
+
+== Régions Azure prises en charge
+
+Toutes les régions sont prises en charge à l'exception des régions China, US Gov et US DoD.
+
+
+
+== Privilèges root
+
+Le logiciel de courtier de données s'exécute automatiquement en tant que root sur l'hôte Linux. L'exécution en tant que racine est une exigence pour les opérations de courtier de données. Par exemple, pour monter des partages.
+
+
+
+== Configuration réseau requise
+
+* Le courtier de données a besoin d'une connexion Internet sortante pour pouvoir interroger le service Cloud Sync sur le port 443.
++
+Lorsque Cloud Sync déploie le courtier de données dans Azure, il crée un groupe de sécurité qui active la communication sortante requise.
+
++
+Si vous devez limiter la connectivité sortante, reportez-vous à la section link:reference-networking.html["liste des noeuds finaux que le courtier de données contacte"].
+
+* NetApp recommande de configurer la source, la cible et le courtier de données pour qu'ils utilisent un service NTP (Network Time Protocol). La différence de temps entre les trois composants ne doit pas dépasser 5 minutes.
+
+
+
+
+== Autorisations requises pour déployer le courtier en données dans Azure
+
+Assurez-vous que le compte utilisateur Azure que vous utilisez pour déployer le courtier de données dispose des autorisations suivantes :
+
+[source, json]
+----
+{
+    "Name": "Azure Data Broker",
+    "Actions": [
+					"Microsoft.Resources/subscriptions/read",
+                    "Microsoft.Resources/deployments/operationstatuses/read",
+                    "Microsoft.Resources/subscriptions/locations/read",
+                    "Microsoft.Network/networkInterfaces/read",
+                    "Microsoft.Network/virtualNetworks/subnets/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Resources/subscriptions/resourceGroups/delete",
+                    "Microsoft.Resources/deployments/write",
+                    "Microsoft.Resources/deployments/validate/action",
+                    "Microsoft.Resources/deployments/operationStatuses/read",
+                    "Microsoft.Resources/deployments/cancel/action",
+                    "Microsoft.Compute/virtualMachines/read",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Compute/disks/delete",
+                    "Microsoft.Network/networkInterfaces/delete",
+                    "Microsoft.Network/publicIPAddresses/delete",
+                    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Network/networkSecurityGroups/write",
+                    "Microsoft.Network/networkSecurityGroups/join/action",
+                    "Microsoft.Compute/disks/write",
+                    "Microsoft.Network/networkInterfaces/write",
+                    "Microsoft.Network/virtualNetworks/read",
+                    "Microsoft.Network/publicIPAddresses/write",
+                    "Microsoft.Compute/virtualMachines/write",
+                    "Microsoft.Compute/virtualMachines/extensions/write",
+                    "Microsoft.Resources/deployments/read",
+                    "Microsoft.Network/networkSecurityGroups/read",
+                    "Microsoft.Network/publicIPAddresses/read",
+                    "Microsoft.Network/virtualNetworks/subnets/join/action",
+                    "Microsoft.Network/publicIPAddresses/join/action",
+                    "Microsoft.Network/networkInterfaces/join/action",
+                    "Microsoft.Storage/storageAccounts/read",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/write",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/read",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/delete",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action",
+                    "Microsoft.EventGrid/systemTopics/read",
+                    "Microsoft.EventGrid/systemTopics/write",
+                    "Microsoft.EventGrid/systemTopics/delete",
+                    "Microsoft.EventGrid/eventSubscriptions/write",
+                    "Microsoft.Storage/storageAccounts/write"
+----
+....
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure Data Broker",
+    "IsCustom": "true"
+}
+....
+Remarque :
+
+. Les autorisations suivantes sont uniquement nécessaires si vous prévoyez d'activer le paramètre de synchronisation continue d'une relation de synchronisation depuis Azure vers un autre emplacement de stockage cloud :
++
+** « Microsoft.Storage/storageAccounts/read »,
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/write',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/read',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/delete',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action',
+** 'Microcrosoft.EventGrid/systemTopics/read',
+** 'Crossoft.EventGrid/systemTopics/write',
+** 'Crosoft.EventGrid/systemTopics/delete',
+** 'Icrosoft.EventGrid/souscriptions/écriture d'événements',
+** « Microsoft.Storage/storageAccounts/write »
+
+
++
+En outre, le périmètre attribuable doit être défini sur étendue de l'abonnement et *pas* étendue du groupe de ressources si vous prévoyez d'implémenter la synchronisation continue dans Azure.
+
+
+
+https://docs.netapp.com/us-en/cloud-manager-sync/task-creating-relationships.html#settings["En savoir plus sur le paramètre de synchronisation continue"].
+
+
+
+== METHODE d'authentification
+
+Lorsque vous déployez le courtier de données, vous devrez choisir une méthode d'authentification pour la machine virtuelle : un mot de passe ou une paire de clés publiques-privées SSH.
+
+Pour obtenir de l'aide sur la création d'une paire de clés, reportez-vous à la section https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Documentation Azure : créez et utilisez une paire de clés publiques-privées SSH pour les machines virtuelles Linux dans Azure"^].
+
+
+
+== Création du courtier de données
+
+Il existe plusieurs façons de créer un nouveau courtier de données. Lors de la création d'une relation de synchronisation, procédez comme suit pour installer un courtier de données dans Azure.
+
+.Étapes
+. Cliquez sur *Créer une nouvelle synchronisation*.
+. Sur la page *Define Sync Relationship*, choisissez une source et une cible et cliquez sur *Continuer*.
++
+Suivez les étapes jusqu'à ce que vous atteiez la page *Groupe de courtiers de données*.
+
+. Sur la page *Groupe de courtiers de données*, cliquez sur *Créer courtier de données*, puis sélectionnez *Microsoft Azure*.
++
+image:screenshot-azure.png["Capture d'écran de la page Data Broker qui vous permet de choisir entre AWS, Azure, Google Cloud et un courtier en données sur site."]
+
+. Entrez un nom pour le courtier de données et cliquez sur *Continuer*.
+. Si vous y êtes invité, connectez-vous à votre compte Microsoft. Si vous n'êtes pas invité, cliquez sur *connexion à Azure*.
++
+Ce formulaire est détenu et hébergé par Microsoft. Vos identifiants ne sont pas fournis à NetApp.
+
+. Choisissez un emplacement pour le courtier de données et entrez les informations de base sur la machine virtuelle.
++
+image:screenshot_azure_data_broker.gif["Capture d'écran de la page de déploiement Azure présentant les champs suivants : abonnement, région Azure, vnet, sous-réseau, nom de machine virtuelle, Nom d'utilisateur, méthode d'authentification et groupe de ressources."]
+
++
+
+NOTE: Si vous prévoyez d'implémenter une relation de synchronisation continue, vous devez attribuer un rôle personnalisé à votre courtier de données. Cela peut également être effectué manuellement après la création du courtier.
+
+. Spécifiez une configuration proxy, si un proxy est requis pour l'accès Internet dans le vnet.
+. Cliquez sur *Continuer* et maintenez la page ouverte jusqu'à ce que le déploiement soit terminé.
++
+Ce processus peut prendre jusqu'à 7 minutes.
+
+. Dans Cloud Sync, cliquez sur *Continuer* une fois le courtier de données disponible.
+. Complétez les pages de l'assistant pour créer la nouvelle relation de synchronisation.
+
+
+Vous avez déployé un courtier en données dans Azure et créé une nouvelle relation de synchronisation. Vous pouvez utiliser ce data broker avec des relations de synchronisation supplémentaires.
+
+.Vous obtenez un message sur le besoin d'un consentement de l'administrateur ?
+****
+Si Microsoft vous informe que l'administrateur doit être approuvé, car Cloud Sync doit disposer d'une autorisation d'accès aux ressources de votre entreprise pour votre compte, vous disposez de deux options :
+
+. Demandez à votre administrateur AD de vous fournir l'autorisation suivante :
++
+Dans Azure, accédez à *Admin Centers > Azure AD > utilisateurs et groupes > User Settings* et activez *les utilisateurs peuvent autoriser les applications à accéder aux données de l'entreprise en leur nom*.
+
+. Demandez à votre administrateur AD de consentir en votre nom à *CloudSync-AzureDataBrokerCreator* à l'aide de l'URL suivante (il s'agit du point de terminaison du consentement de l'administrateur) :
++
+\https://login.microsoftonline.com/{FILL ICI VOTRE identifiant DE LOCATAIRE}/v2.0/adminConcey?client_ID=8ee4ca3a-bafa-4831-97cc-5a38923cab85&redirect_uri=https://cloudsync.netapp.com&scope=https://management.azure.com/user_impersonationhttps://graph.microsoft.com/User.Read
+
++
+Comme indiqué dans l'URL, notre URL d'application est \https://cloudsync.netapp.com et l'ID client de l'application est 8ee4ca3a-bafa-4831-97cc-5a38923cab85.
+
+
+
+****
+
+
+== Détails sur la machine virtuelle du courtier de données
+
+Cloud Sync crée un courtier de données dans Azure à l'aide de la configuration suivante.
+
+Type de VM:: Standard DS4 v2
+VCPU:: 8
+RAM:: 28 GO
+Système d'exploitation:: CentOS 7.7
+Taille et type de disque:: SSD premium de 64 Go
+

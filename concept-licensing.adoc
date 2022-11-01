@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: concept-licensing.html 
+keywords: licenses, licensing, subscriptions, annual subscription, paygo, hourly subscription 
+summary: Il existe deux façons de payer les relations de synchronisation après la fin de votre essai gratuit de 14 jours. La première option consiste à vous abonner à AWS ou Azure pour payer à votre gré ou à payer annuellement. La deuxième option consiste à acheter des licences directement auprès de NetApp. 
+---
+= Présentation des licences
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Il existe deux façons de payer les relations de synchronisation après la fin de votre essai gratuit de 14 jours. La première option consiste à vous abonner à AWS ou Azure pour payer à votre gré ou à payer annuellement. La deuxième option consiste à acheter des licences directement auprès de NetApp.
+
+
+
+== Abonnement Marketplace
+
+L'abonnement au service Cloud Sync d'AWS ou d'Azure vous permet de payer à un tarif horaire ou de payer annuellement. link:task-licensing.html["Vous pouvez vous abonner via AWS ou Azure"], selon l'endroit où vous voulez être facturé.
+
+
+
+=== Abonnement à l'heure
+
+Avec un abonnement avec paiement à l'heure basé sur l'utilisation, vous payez à l'heure en fonction du nombre de relations de synchronisation que vous créez.
+
+* https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-sync-service?tab=PlansAndPrice["Voir les tarifs à Azure"^]
+* https://aws.amazon.com/marketplace/pp/B01LZV5DUJ["Consultez les tarifs à la carte dans AWS"^]
+
+
+
+
+=== Abonnement annuel
+
+Un abonnement annuel fournit une licence pour 20 relations de synchronisation que vous payez avant. Si vous utilisez plus de 20 relations synchronisées et que vous vous êtes abonné à AWS, vous payez les relations supplémentaires à l'heure.
+
+https://aws.amazon.com/marketplace/pp/B06XX5V3M2["Voir les tarifs annuels dans AWS"^]
+
+
+
+== Licences de NetApp
+
+L'achat de licences directement auprès de NetApp constitue une autre façon de payer les relations de synchronisation. Chaque licence vous permet de créer jusqu'à 20 relations de synchronisation.
+
+Vous pouvez utiliser ces licences avec un abonnement AWS ou Azure. Par exemple, si vous disposez de 25 relations de synchronisation, vous pouvez payer les 20 premières relations de synchronisation à l'aide d'une licence, puis effectuer des opérations de paiement à la demande à partir d'AWS ou d'Azure avec les 5 autres relations de synchronisation.
+
+link:task-licensing.html["Découvrez comment acheter des licences et les ajouter à Cloud Sync"].
+
+
+
+=== Termes de la licence
+
+Les clients qui achètent une licence BYOL (Bring Your Own License) au service Cloud Sync doivent être conscients des limites associées au droit de licence.
+
+* Les clients ont le droit de tirer parti de la licence BYOL pour une durée maximale d'un an à compter de la date de livraison.
+* Les clients ont le droit de tirer parti de la licence BYOL pour établir et ne pas dépasser un total de 20 connexions individuelles entre une source et une cible (chaque " relation de synchronisation ").
+* Le droit d'un client expire à la fin de la période d'un an de licence, que le Client ait atteint la limite de 20 relations de synchronisation.
+* Si le Client choisit de renouveler sa licence, les relations de synchronisation non utilisées associées à l'octroi de licence précédent ne passent PAS au renouvellement de la licence.
+
