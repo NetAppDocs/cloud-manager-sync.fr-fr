@@ -100,7 +100,7 @@ Un courtier de données contacte les terminaux suivants :
 | \https://sts.amazonaws.com | Pour vérifier les identifiants AWS lorsque le courtier est déployé dans AWS ou lorsqu'il est déployé sur vos sites et que les identifiants AWS sont fournis. Le courtier de données contacte ce point final pendant le déploiement, lorsqu'il est mis à jour et lorsqu'il est redémarré. 
 
 
-| \https://cloudmanager.cloud.netapp.com \https://netapp-cloud-account.auth0.com | Pour contacter Cloud Data SENSE lorsque vous utilisez Data Sense pour sélectionner les fichiers source d'une nouvelle relation de synchronisation. 
+| \https://console.bluexp.netapp.com/ \https://netapp-cloud-account.auth0.com | Pour contacter Cloud Data SENSE lorsque vous utilisez Data Sense pour sélectionner les fichiers source d'une nouvelle relation de synchronisation. 
 |===
 
 
