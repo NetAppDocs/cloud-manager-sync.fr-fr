@@ -24,13 +24,13 @@ Découvrez les nouveautés de Cloud Sync.
 
 === Filtrez les répertoires par nom
 
-Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation.
+Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut.
 
 https://docs.netapp.com/us-en/cloud-manager-sync/task-creating-relationships.html#settings["En savoir plus sur le paramètre exclure les noms de répertoire"].
 
 
 
-== Prise en charge supplémentaire d'Amazon S3 et de ONTAP S3 Storage
+=== Prise en charge supplémentaire d'Amazon S3 et de ONTAP S3 Storage
 
 Cloud Sync prend désormais en charge des relations de synchronisation supplémentaires pour AWS S3 et ONTAP S3 Storage :
 

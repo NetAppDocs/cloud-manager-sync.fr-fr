@@ -1689,7 +1689,6 @@
   <block id="4faa53699bc5575d520ebbbdbdcb3676" category="section-title">[[licences]]achat de licences de NetApp et leur ajout à Cloud Sync</block>
   <block id="5912630061434e78e733b8d5e5e3dc88" category="section-title">11 décembre 2022</block>
   <block id="9709c6ba9ff4b10cb5ec3f4f956d3226" category="section-title">Filtrez les répertoires par nom</block>
-  <block id="7b9790a244d066462a8602bd0a61ba73" category="paragraph">Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation.</block>
   <block id="84a8ea117dd9c6b8ddbbe8f47665f923" category="inline-link">En savoir plus sur le paramètre exclure les noms de répertoire</block>
   <block id="8391e3aac2d2f8dd1b8e38350d072463" category="paragraph"><block ref="018123db357961d73398ef3066f74a1b" category="inline-link-rx"></block>.</block>
   <block id="211e17aac7e6f53a17024d84713e8c34" category="section-title">Prise en charge supplémentaire d'Amazon S3 et de ONTAP S3 Storage</block>
@@ -1709,4 +1708,5 @@
   <block id="157e0bfc3909da4f9907f6377e70c5d2" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block> Payez vos relations de synchronisation après la fin de votre essai gratuit</block>
   <block id="f8fb6587a32dba313e626666cb0364a8" category="list-text">Exclure les noms de répertoire</block>
   <block id="baf659a0894b31eff8d9e87af59af9e5" category="list-text">Spécifiez un maximum de 15 répertoires à exclure de la synchronisation en saisissant leur nom et en appuyant sur *entrée*. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut. Si vous souhaitez les inclure dans votre synchronisation, veuillez nous contacter.</block>
+  <block id="43b44f78e255d05aac846a6181095cd6" category="paragraph">Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut.</block>
 </blocks>
