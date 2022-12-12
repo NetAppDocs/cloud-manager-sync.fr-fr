@@ -18,6 +18,30 @@ Découvrez les nouveautés de Cloud Sync.
 
 
 
+== 11 décembre 2022
+
+
+
+=== Filtrez les répertoires par nom
+
+Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation.
+
+https://docs.netapp.com/us-en/cloud-manager-sync/task-creating-relationships.html#settings["En savoir plus sur le paramètre exclure les noms de répertoire"].
+
+
+
+== Prise en charge supplémentaire d'Amazon S3 et de ONTAP S3 Storage
+
+Cloud Sync prend désormais en charge des relations de synchronisation supplémentaires pour AWS S3 et ONTAP S3 Storage :
+
+* AWS S3 vers le stockage ONTAP S3
+* Stockage ONTAP S3 vers AWS S3
+
+
+https://docs.netapp.com/us-en/cloud-manager-sync/reference-supported-relationships.html["En savoir plus sur les relations de synchronisation prises en charge"].
+
+
+
 == 30 octobre 2022
 
 

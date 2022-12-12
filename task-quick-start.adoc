@@ -15,12 +15,14 @@ summary: La mise en route du service Cloud Sync comprend quelques étapes.
 
 La mise en route du service Cloud Sync comprend quelques étapes.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Connectez-vous et configurez BlueXP
 [role="quick-margin-para"]
 Vous devriez avoir commencé avec BlueXP, qui inclut la connexion, la configuration d'un compte, et éventuellement le déploiement d'un connecteur et la création d'environnements de travail.
 
 [role="quick-margin-para"]
 Si vous souhaitez créer des relations de synchronisation pour l'un des éléments suivants, vous devez d'abord créer ou découvrir un environnement de travail :
 
+[role="quick-margin-list"]
 * Amazon FSX pour ONTAP
 * Azure NetApp Files
 * Cloud Volumes ONTAP
@@ -30,31 +32,38 @@ Si vous souhaitez créer des relations de synchronisation pour l'un des élémen
 [role="quick-margin-para"]
 Un connecteur est requis pour Cloud Volumes ONTAP, les clusters ONTAP sur site et Amazon FSX pour ONTAP.
 
+[role="quick-margin-list"]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-overview.html["Apprenez à vous lancer avec BlueXP"^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["En savoir plus sur les connecteurs"^]
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Préparez votre source et votre cible
 [role="quick-margin-para"]
 Vérifiez que la source et la cible sont prises en charge et configurées. L'exigence la plus importante consiste à vérifier la connectivité entre le groupe de courtiers de données et les emplacements source et cible.
 
+[role="quick-margin-list"]
 * link:reference-supported-relationships.html["Afficher les relations prises en charge"]
 * link:reference-requirements.html["Préparer la source et la cible"]
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Préparez un emplacement pour le data broker NetApp
 [role="quick-margin-para"]
 Le logiciel de courtier de données NetApp synchronise les données d'une source vers une cible (appelée « relation synchrone »). Vous pouvez exécuter le data broker dans AWS, Azure, Google Cloud Platform ou sur votre site. Un groupe de courtiers de données, qui comprend un ou plusieurs courtiers de données, a besoin d'une connexion Internet sortante sur le port 443 afin que le service IT puisse communiquer avec le service Cloud Sync et contacter quelques autres services et référentiels. link:reference-networking.html#networking-endpoints["Afficher la liste des noeuds finaux"].
 
 [role="quick-margin-para"]
 Cloud Sync vous guide tout au long du processus d'installation lorsque vous créez une relation de synchronisation, à partir de laquelle vous pouvez déployer un courtier de données dans le Cloud ou télécharger un script d'installation pour votre propre hôte Linux.
 
+[role="quick-margin-list"]
 * link:task-installing-aws.html["Consultez l'installation d'AWS"]
 * link:task-installing-azure.html["Vérifiez l'installation d'Azure"]
 * link:task-installing-gcp.html["Consultez l'installation de Google Cloud"]
 * link:task-installing-linux.html["Vérifiez l'installation de l'hôte Linux"]
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"] Créez votre première relation de synchronisation
 [role="quick-margin-para"]
 Connectez-vous à https://console.bluexp.netapp.com/["BlueXP"^], Cliquez sur *Sync*, puis faites glisser et déposez vos sélections pour la source et la cible. Suivez les invites pour terminer la configuration. link:task-creating-relationships.html["En savoir plus >>"].
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Payez vos relations de synchronisation après la fin de votre essai gratuit
 [role="quick-margin-para"]
 Abonnez-vous à AWS ou Azure pour payer à votre gré ou pour payer chaque année. Ou achetez des licences directement auprès de NetApp. Il vous suffit d'aller à la page Paramètres de licence de Cloud Sync pour la configurer. link:task-licensing.html["En savoir plus >>"].

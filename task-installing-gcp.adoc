@@ -135,6 +135,7 @@ Le déploiement de l'instance dure environ 5 à 10 minutes. Vous pouvez contrôl
 . Complétez les pages de l'assistant pour créer la nouvelle relation de synchronisation.
 
 
+.Résultat
 Vous avez déployé un courtier en données dans Google Cloud et créé une nouvelle relation synchrone. Vous pouvez utiliser ce data broker avec des relations de synchronisation supplémentaires.
 
 
@@ -149,10 +150,11 @@ Lorsque vous créez une relation synchrone et que vous choisissez Google Cloud S
 . Cliquez sur *autorisations*.
 . Cliquez sur *Ajouter*.
 . Entrez le nom du compte de service du courtier de données.
-. Sélectionnez un rôle  required for the service account,les mêmes autorisations que celles indiquées ci-dessus.
+. Sélectionnez un rôle <<Autorisations requises pour le compte de service,les mêmes autorisations que celles indiquées ci-dessus>>.
 . Cliquez sur *Enregistrer*.
 
 
+.Résultat
 Lorsque vous configurez une relation de synchronisation, vous pouvez désormais choisir ce compartiment en tant que source ou cible dans la relation de synchronisation.
 
 

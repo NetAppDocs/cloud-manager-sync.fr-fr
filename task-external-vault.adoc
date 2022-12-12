@@ -17,12 +17,15 @@ Lorsque vous créez une relation de synchronisation qui requiert des identifiant
 
 Cette fonctionnalité est prise en charge par le biais de l'API Cloud Sync avec des relations synchronisées qui requièrent des identifiants Amazon S3, Azure ou Google Cloud.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Préparez le coffre-fort
 [role="quick-margin-para"]
 Préparez le coffre-fort pour fournir les informations d'identification au groupe de courtiers de données en configurant les URL. Les URL des secrets dans le coffre-fort doivent se terminer par _creds_.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Préparer le groupe de courtiers de données
 [role="quick-margin-para"]
 Préparez le groupe de courtier de données pour extraire les informations d'identification du coffre-fort externe en modifiant le fichier de configuration local de chaque courtier de données du groupe.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Créez une relation de synchronisation à l'aide de l'API
 [role="quick-margin-para"]
 Maintenant que tout est configuré, vous pouvez envoyer un appel API pour créer une relation de synchronisation qui utilise votre coffre-fort pour obtenir les secrets.
 

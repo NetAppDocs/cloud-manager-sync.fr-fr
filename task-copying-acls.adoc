@@ -17,8 +17,8 @@ summary: 'Cloud Sync peut copier les listes de contrôle d"accès (ACL) entre le
 Cloud Sync peut copier les listes de contrôle d'accès (ACL) entre les partages SMB et entre un partage SMB et le stockage objet (à l'exception de ONTAP S3). Si nécessaire, vous avez également la possibilité de conserver manuellement des listes de contrôle d'accès entre les partages SMB à l'aide de robocopy.
 
 .Choix
-*  up Cloud Sync to copy ACLs from an SMB server,Configurez Cloud Sync pour copier automatiquement les ACL
-*  copying ACLs between SMB shares,Copiez manuellement les listes de contrôle d'accès entre les partages SMB
+* <<Setting up Cloud Sync to copy ACLs from an SMB server,Configurez Cloud Sync pour copier automatiquement les ACL>>
+* <<Copie manuelle des listes de contrôle d'accès entre partages SMB,Copiez manuellement les listes de contrôle d'accès entre les partages SMB>>
 
 
 
@@ -27,6 +27,7 @@ Cloud Sync peut copier les listes de contrôle d'accès (ACL) entre les partages
 
 Copie de listes de contrôle d'accès entre les partages SMB et entre les partages SMB et le stockage objet en activant un paramètre lors de la création d'une relation ou après la création d'une relation.
 
+.Ce dont vous avez besoin
 Cette fonctionnalité fonctionne avec _tout_ type de courtier en données : AWS, Azure, Google Cloud Platform ou comme courtier en données sur site. Le courtier en données sur site peut être exécuté link:task-installing-linux.html["tout système d'exploitation pris en charge"].
 
 .Étapes d'une nouvelle relation
@@ -61,6 +62,7 @@ image:screenshot-sync-tags-metadata.png["Capture d'écran de la sixième étape 
 . Cliquez sur *Enregistrer les paramètres*.
 
 
+.Résultat
 Lors de la synchronisation des données, Cloud Sync préserve les ACL entre la source et la cible.
 
 

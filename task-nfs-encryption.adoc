@@ -57,7 +57,7 @@ Si vous créez une relation de synchronisation chiffrée, les données cryptées
 
 
 
-== Ce dont vous aurez besoin pour commencer
+== Ce dont vous avez besoin pour commencer
 
 Assurez-vous d'avoir les éléments suivants :
 
@@ -133,4 +133,5 @@ image:screenshot_nfs_encryption_review.gif["Capture d'écran affichant l'écran 
 
 
 
+.Résultat
 Cloud Sync commence à créer la nouvelle relation de synchronisation. Lorsque vous avez terminé, cliquez sur *Afficher dans le tableau de bord* pour afficher les détails de la nouvelle relation.

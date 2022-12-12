@@ -315,7 +315,7 @@ La relation de synchronisation indique le débit de la carte réseau du groupe d
 
 
 
-=== J'éprouve des problèmes de performance. Pouvons-nous limiter le nombre de transferts simultanés ?
+=== J'ai des problèmes de performances. Pouvons-nous limiter le nombre de transferts simultanés ?
 
 Si vous avez des fichiers très volumineux (plusieurs Tbs chacun), le processus de transfert peut prendre beaucoup de temps et les performances peuvent être affectées.
 

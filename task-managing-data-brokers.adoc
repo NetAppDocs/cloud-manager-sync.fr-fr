@@ -132,6 +132,7 @@ image:screenshot_sync_group_edit.gif["Capture d'écran du menu d'action disponib
 . Entrez un nouveau nom et cliquez sur *Enregistrer*.
 
 
+.Résultat
 Cloud Sync met à jour le nom du groupe de courtiers de données.
 
 
@@ -187,6 +188,7 @@ image:screenshot_sync_group_remove.png["Capture d'écran du menu d'action dispon
 . Cliquez sur *déplacer*.
 
 
+.Résultat
 Cloud Sync déplace le courtier en données vers un groupe de courtiers de données nouveau ou existant. S'il n'y a pas d'autres courtiers de données dans le groupe précédent, Cloud Sync le supprime.
 
 
@@ -203,6 +205,7 @@ Mettez à jour la configuration du proxy pour un courtier de données en ajoutan
 . Cliquez sur *mettre à jour*.
 
 
+.Résultat
 Cloud Sync met à jour le courtier de données pour utiliser la configuration proxy pour l'accès à Internet.
 
 
@@ -272,6 +275,7 @@ image:screenshot_sync_group_remove.gif["Capture d'écran du menu d'action dispon
 . Cliquez sur *Supprimer le courtier de données*.
 
 
+.Résultat
 Cloud Sync supprime le courtier de données du groupe.
 
 
@@ -291,4 +295,5 @@ image:screenshot_sync_group_add.png["Capture d'écran du menu d'action disponibl
 . Pour confirmer, entrez le nom du groupe et cliquez sur *Supprimer le groupe*.
 
 
+.Résultat
 Cloud Sync supprime les courtiers de données et supprime le groupe.

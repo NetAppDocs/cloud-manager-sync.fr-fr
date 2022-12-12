@@ -71,6 +71,7 @@ Cloud Sync vous permet de synchroniser les données d'une source vers une cible.
 * IBM Cloud Object Storage
 * Serveur NFS
 * Cluster ONTAP sur site
+* Stockage ONTAP S3
 * Serveur SMB
 * StorageGRID
 
@@ -247,6 +248,7 @@ Cloud Sync vous permet de synchroniser les données d'une source vers une cible.
 
 
 | Stockage ONTAP S3  a| 
+* Amazon S3
 * Google Cloud Storage
 * Serveur SMB
 * StorageGRID

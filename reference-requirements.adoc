@@ -56,7 +56,7 @@ NOTE: Le courtier de données ignore les répertoires suivants par défaut : .sn
 
 
 
-== Exigences des compartiments Amazon S3
+== [[s3]]exigences du compartiment Amazon S3
 
 Vérifiez que votre compartiment Amazon S3 répond aux exigences suivantes.
 
@@ -103,7 +103,7 @@ image:screenshot_iam_role_arn.gif["Capture d'écran de la console AWS IAM affich
 
 
 
-== Exigences de stockage Azure Blob
+== [[blob]]exigences de stockage Azure Blob
 
 Assurez-vous que votre stockage Azure Blob répond aux exigences suivantes.
 
@@ -186,7 +186,7 @@ link:task-managing-data-brokers.html#define-a-unified-configuration-for-a-data-b
 
 
 
-== Exigences relatives au compartiment de stockage Google Cloud
+== [[google]]exigences relatives au compartiment de stockage Google Cloud
 
 Assurez-vous que votre rayon de stockage Google Cloud Storage répond aux exigences suivantes.
 

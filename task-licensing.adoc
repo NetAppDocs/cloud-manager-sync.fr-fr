@@ -28,7 +28,7 @@ Vous ne pourrez pas créer de relations supplémentaires. Les relations existant
 ****
 
 
-== Abonnement à AWS
+== [[aws]]abonnement d'AWS
 
 AWS vous permet de payer à votre gré ou de payer chaque année.
 
@@ -52,10 +52,11 @@ video::video_cloud_sync_registering.mp4[width=848,height=480]
 
 
 
-== S'abonner à Azure
+== [[Azure]]abonnement d'Azure
 
 Azure vous permet de payer à votre gré ou de payer chaque année.
 
+.Ce dont vous avez besoin
 Un compte utilisateur Azure disposant des autorisations Contributeur ou Propriétaire dans l'abonnement correspondant.
 
 .Étapes
@@ -77,10 +78,11 @@ video::video_cloud_sync_registering_azure.mp4[width=848,height=480]
 
 
 
-== Achat de licences auprès de NetApp et ajout de ces licences à Cloud Sync
+== [[licences]]achat de licences de NetApp et leur ajout à Cloud Sync
 
 Pour payer vos relations de synchronisation, vous devez acheter une ou plusieurs licences et les ajouter au service Cloud Sync.
 
+.Ce dont vous avez besoin
 Vous devez disposer du numéro de série correspondant à votre licence, ainsi que du nom d'utilisateur et du mot de passe du compte sur le site de support NetApp auquel la licence est associée.
 
 .Étapes
@@ -117,4 +119,5 @@ Si vous avez prolongé une licence Cloud Sync que vous avez achetée auprès de 
 
 
 
+.Résultat
 Cloud Sync met à jour la licence existante avec la nouvelle date d'expiration.
