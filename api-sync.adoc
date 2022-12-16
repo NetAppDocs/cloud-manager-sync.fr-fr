@@ -39,6 +39,11 @@ Body:
               "password": "<user_password>"
 }
 ----
+
+
+
+NOTE: Si vous utilisez un compte de messagerie personnel sans ID client, vous pouvez utiliser l’ID client par défaut « QC3AgHk6qdbmC7Yyr82ApBwaaJLwRrNO ».
+
 . Obtenez votre identifiant de compte BlueXp.
 +
 [source, http]

@@ -1709,4 +1709,5 @@
   <block id="f8fb6587a32dba313e626666cb0364a8" category="list-text">Exclure les noms de répertoire</block>
   <block id="baf659a0894b31eff8d9e87af59af9e5" category="list-text">Spécifiez un maximum de 15 répertoires à exclure de la synchronisation en saisissant leur nom et en appuyant sur *entrée*. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut. Si vous souhaitez les inclure dans votre synchronisation, veuillez nous contacter.</block>
   <block id="43b44f78e255d05aac846a6181095cd6" category="paragraph">Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut.</block>
+  <block id="109c4a4872ddbe9910e974f2b3dd0211" category="admonition">Si vous utilisez un compte de messagerie personnel sans ID client, vous pouvez utiliser l’ID client par défaut « QC3AgHk6qdbmC7Yyr82ApBwaaJLwRrNO ».</block>
 </blocks>
