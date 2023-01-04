@@ -18,6 +18,28 @@ Découvrez les nouveautés de Cloud Sync.
 
 
 
+== 3 janvier 2023
+
+
+
+=== Affiche la configuration locale du courtier de données dans l'interface utilisateur
+
+Il existe maintenant une option *Afficher la configuration* qui permet aux utilisateurs d'afficher la configuration locale de chaque courtier de données dans l'interface utilisateur.
+
+https://docs.netapp.com/us-en/cloud-manager-sync/task-managing-data-brokers.html["En savoir plus sur la gestion des groupes de courtiers de données"].
+
+
+
+=== Effectuer la mise à niveau vers Azure et le système d'exploitation des courtiers de données Google Cloud
+
+Le système d'exploitation des courtiers de données d'Azure et de Google Cloud a été mis à niveau vers Rocky Linux 9.0.
+
+https://docs.netapp.com/us-en/cloud-manager-sync/task-installing-azure.html#details-about-the-data-broker-vm["En savoir plus sur l'instance de courtier de données dans Azure"].
+
+https://docs.netapp.com/us-en/cloud-manager-sync/task-installing-gcp.html#details-about-the-data-broker-vm-instance["En savoir plus sur l'instance de courtier en données dans Google Cloud"].
+
+
+
 == 11 décembre 2022
 
 

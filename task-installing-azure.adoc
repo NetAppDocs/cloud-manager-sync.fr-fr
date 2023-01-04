@@ -208,6 +208,6 @@ Cloud Sync crée un courtier de données dans Azure à l'aide de la configuratio
 Type de VM:: Standard DS4 v2
 VCPU:: 8
 RAM:: 28 GO
-Système d'exploitation:: CentOS 7.7
+Système d'exploitation:: Rocky Linux 9.0
 Taille et type de disque:: SSD premium de 64 Go
 

@@ -166,6 +166,6 @@ Cloud Sync crée un courtier en données dans Google Cloud à l'aide de la confi
 Type de machine:: n2-standard-4
 VCPU:: 4
 RAM:: 15 GO
-Système d'exploitation:: Red Hat Enterprise Linux 7.7
+Système d'exploitation:: Rocky Linux 9.0
 Taille et type de disque:: Disque dur pd-standard 20 Go
 

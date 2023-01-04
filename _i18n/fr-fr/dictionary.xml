@@ -594,7 +594,6 @@
   <block id="e53619c1fe611a51eeeb8d148ba6e532" category="list-text">RAM</block>
   <block id="9f101c0e6e5929a04c9e7663fdf91eda" category="list-text">15 GO</block>
   <block id="696c660ff8d9323e55146a6dbd4e4088" category="list-text">Système d'exploitation</block>
-  <block id="935b9daeec310c8e2291d043d3e14f44" category="list-text">Red Hat Enterprise Linux 7.7</block>
   <block id="c03f3cc8275a0a87d7784cf12a264c0b" category="list-text">Taille et type de disque</block>
   <block id="f3796c63e27caa7881ad0844ee9e9544" category="list-text">Disque dur pd-standard 20 Go</block>
   <block id="e3d4ba055c2fed02290d0d5839286227" category="summary">Lorsque vous créez un nouveau courtier en données, choisissez l'option AWS Data Broker pour déployer le logiciel de courtier en données sur une nouvelle instance EC2 dans un VPC. Cloud Sync vous guide tout au long du processus d'installation, mais les exigences et les étapes sont répétées sur cette page pour vous aider à vous préparer à l'installation.</block>
@@ -1195,7 +1194,6 @@
   <block id="de66cb8e421123abb772a3664a897531" category="list-text">Standard DS4 v2</block>
   <block id="c9f0f895fb98ab9159f51fd0297e236d" category="list-text">8</block>
   <block id="472d573b9b96b332aa4fd565b8a78c68" category="list-text">28 GO</block>
-  <block id="b0a4a3d9e04daf57d04de7ad03004279" category="list-text">CentOS 7.7</block>
   <block id="d6856312a90199668ecb7d8f4a9f1322" category="list-text">SSD premium de 64 Go</block>
   <block id="f549fa5a7b8a70265d3f6f6fc5ae1943" category="summary">Vérifiez que votre source et vos cibles répondent aux exigences suivantes.</block>
   <block id="41413218d6e0e0f3841260f7834a57b2" category="list-text">NetApp recommande de configurer la source, la cible et les courtiers de données pour utiliser un service NTP (Network Time Protocol). La différence de temps entre les trois composants ne doit pas dépasser 5 minutes.</block>
@@ -1710,4 +1708,16 @@
   <block id="baf659a0894b31eff8d9e87af59af9e5" category="list-text">Spécifiez un maximum de 15 répertoires à exclure de la synchronisation en saisissant leur nom et en appuyant sur *entrée*. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut. Si vous souhaitez les inclure dans votre synchronisation, veuillez nous contacter.</block>
   <block id="43b44f78e255d05aac846a6181095cd6" category="paragraph">Un nouveau paramètre *exclure les noms de répertoire* est maintenant disponible pour les relations de synchronisation. Les utilisateurs peuvent filtrer un maximum de 15 noms de répertoire depuis leur synchronisation. Les répertoires .copy-Offload, .snapshot, ~snapshot sont exclus par défaut.</block>
   <block id="109c4a4872ddbe9910e974f2b3dd0211" category="admonition">Si vous utilisez un compte de messagerie personnel sans ID client, vous pouvez utiliser l’ID client par défaut « QC3AgHk6qdbmC7Yyr82ApBwaaJLwRrNO ».</block>
+  <block id="003d136e5089a4f9ae0f1df3f6fc37fa" category="list-text">Rocky Linux 9.0</block>
+  <block id="bfc6fe3f8d2577420634f29daac2cfe3" category="section-title">3 janvier 2023</block>
+  <block id="2ce75b34222d130ea74078b75eb79cc0" category="section-title">Affiche la configuration locale du courtier de données dans l'interface utilisateur</block>
+  <block id="88dcb8d0dd987f4f5606df5981050a8d" category="paragraph">Il existe maintenant une option *Afficher la configuration* qui permet aux utilisateurs d'afficher la configuration locale de chaque courtier de données dans l'interface utilisateur.</block>
+  <block id="44580ec91e2012543452f790258e1ccf" category="inline-link">En savoir plus sur la gestion des groupes de courtiers de données</block>
+  <block id="1bc15ec9e137e3d7653e9f04a08b840b" category="paragraph"><block ref="cbafc7311a6970273ad5a1c3b2c0b656" category="inline-link-rx"></block>.</block>
+  <block id="02840b44154535342dd4cf6739d2c77d" category="section-title">Effectuer la mise à niveau vers Azure et le système d'exploitation des courtiers de données Google Cloud</block>
+  <block id="69e30db11dbff8b5efd6091166af232f" category="paragraph">Le système d'exploitation des courtiers de données d'Azure et de Google Cloud a été mis à niveau vers Rocky Linux 9.0.</block>
+  <block id="1c01c907ca0a713df58ba8f4b21fd39c" category="inline-link">En savoir plus sur l'instance de courtier de données dans Azure</block>
+  <block id="696fb1a24aae70782cbc2deebfd01ec3" category="paragraph"><block ref="721924a927b7206a5d8775fe840ddbcd" category="inline-link-rx"></block>.</block>
+  <block id="648e059d69339d82d82738abf0bd4016" category="inline-link">En savoir plus sur l'instance de courtier en données dans Google Cloud</block>
+  <block id="6619068f4ac101fa3e8003ee6618d9da" category="paragraph"><block ref="fa611f614e55d9a2ca38028d5a5ab5b7" category="inline-link-rx"></block>.</block>
 </blocks>
